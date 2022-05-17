@@ -22,7 +22,12 @@ func main() {
 }
 
 func process(conn net.Conn) {
-	defer conn.Close()
+	defer func(conn net.Conn) {
+		err := conn.Close()
+		if err != nil {
+
+		}
+	}(conn)
 	reader := bufio.NewReader(conn)
 	for {
 		b, err := reader.ReadByte()

@@ -23,9 +23,12 @@ func main() {
 		fmt.Println("An error occured while reading input. Please try again", err)
 		return
 	}
-	input = strings.TrimSuffix(input, "\n")
+	fmt.Println(input)
+	input = strings.TrimSuffix(input, "\r\n")
+	fmt.Println(input)
 
-	guess, err := strconv.Atoi(input)
+	guess, err := strconv.ParseInt(input, 10, 0)
+	fmt.Println(err)
 	if err != nil {
 		fmt.Println("Invalid input. Please enter an integer value")
 		return
